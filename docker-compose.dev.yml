@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  django:
+    env_file:
+      - ./dev.env

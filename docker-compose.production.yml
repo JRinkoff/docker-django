@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  redis:
+    restart: always
+
+  postgres:
+    restart: always
+
+  nginx:
+    restart: always
+
+  varnish:
+    restart: always
+
+  django:
+    env_file:
+      - ./production.env
+    restart: always
