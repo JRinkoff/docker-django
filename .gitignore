@@ -1,0 +1,9 @@
+/docker/etc/redis.sock
+/docker/postgres/data/
+/docker/redis/dump.rdb
+/docker/varnish/varnish.bin
+/docker/varnish/varnish.log
+/cache/
+/media/
+/static/
+.init
