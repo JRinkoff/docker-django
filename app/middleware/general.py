@@ -18,6 +18,5 @@ class InternalUseOnlyMiddleware(object):
         remote_addr = request.META.get(
             'HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', None))
         ip = remote_addr.replace(', 127.0.0.1', '')
-        ip = ip.replace(', 172.17.0.6', '')
         if ip not in settings.INTERNAL_IPS:
             raise Http404
