@@ -33,7 +33,6 @@ MIDDLEWARE_CLASSES = (
     'app.middleware.cache.DisableClientSideCachingMiddleware',
     'django.middleware.gzip.GZipMiddleware',
 
-    'htmlmin.middleware.HtmlMinifyMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -45,7 +44,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'htmlmin.middleware.MarkRequestMiddleware',
     'app.middleware.general.InternalUseOnlyMiddleware',
     'app.middleware.cache.TTLMiddleware',
     'app.middleware.cache.VaryMiddleware',

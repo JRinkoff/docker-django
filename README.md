@@ -54,7 +54,6 @@ The following applications are included to kickstart your Django project. Of cou
 * django-dbbackup <https://github.com/django-dbbackup/django-dbbackup>
 * django-debug-toolbar <https://github.com/jazzband/django-debug-toolbar>
 * django-debug-toolbar-template-timings <https://github.com/orf/django-debug-toolbar-template-timings> 
-* django-htmlmin <https://pypi.python.org/pypi/django-htmlmin>
 * django-jet <https://pypi.python.org/pypi/django-jet>
 
 Also some middleware like ```TTLMiddleware``` and ```VaryMiddleware``` is included to make it possible to set the Vary and TTL headers from within a Django class-based view. Varnish can then use these headers to determine what to vary on and to determine the TTL of an object.
