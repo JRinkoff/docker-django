@@ -122,4 +122,4 @@ EOF
 echo "$varnish_logrotate" > /etc/logrotate.d/varnish
 
 # Crontab
-(crontab -l ; echo "*/5 * * * * docker exec -i -t django python /app/manage.py runcrons") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
+(crontab -l ; echo "*/5 * * * * docker exec django python /app/manage.py runcrons") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
