@@ -15,8 +15,7 @@ class InternalUseOnlyMiddleware(object):
             return
         if not request.path.startswith(admin_index):
             return
-        remote_addr = request.META.get(
-            'HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', None))
-        ip = remote_addr.replace(', 127.0.0.1', '')
+        remote_addr = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', None))
+        ip = remote_addr.split(',')[0].strip()
         if ip not in settings.INTERNAL_IPS:
             raise Http404
