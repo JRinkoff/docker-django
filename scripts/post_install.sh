@@ -70,7 +70,7 @@ alias app='cd /home/app/'
 
 # Functions (general)
 cdl() {
-  cd "$@";
+  cd "\$@";
   ls -al;
 }
 EOF
