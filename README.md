@@ -51,6 +51,7 @@ The following applications are included to kickstart your Django project. Of cou
 
 * django-cachalot <https://github.com/BertrandBordage/django-cachalot>
 * django-compressor <https://github.com/django-compressor/django-compressor>
+* django-cron <https://github.com/Tivix/django-cron>
 * django-dbbackup <https://github.com/django-dbbackup/django-dbbackup>
 * django-debug-toolbar <https://github.com/jazzband/django-debug-toolbar>
 * django-debug-toolbar-template-timings <https://github.com/orf/django-debug-toolbar-template-timings> 

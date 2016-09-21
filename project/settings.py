@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.postgres',
     'debug_toolbar',
     'template_timings_panel',
+    'django_cron',
 
     'app',
 )
@@ -202,3 +203,7 @@ DBBACKUP_STORAGE_OPTIONS = {
     'secret_key': os.environ.get('AWS_SECRET_KEY', ''),
     'bucket_name': os.environ.get('AWS_BUCKET_NAME', ''),
 }
+
+CRON_CLASSES = [
+    #'app.cronjobs.ExampleCron',
+]
