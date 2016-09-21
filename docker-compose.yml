@@ -40,8 +40,8 @@ services:
       dns:
         - 8.8.8.8
         - 8.8.4.4
-      command: /bin/bash -c "/usr/sbin/varnishd -a :80 -f /docker/varnish/default.vcl -T localhost:6082
-                    -s file,/docker/varnish/varnish.bin,1G -S /etc/varnish/secret && varnishncsa | tee /app/docker/log/varnish/access.log"
+      command: /bin/bash -c "/usr/sbin/varnishd -a :80 -f /docker/varnish/default.vcl -T :6082
+                    -s file,/docker/varnish/varnish.bin,1G -S /docker/varnish/secret && varnishncsa | tee /app/docker/log/varnish/access.log"
 
     django:
       container_name: django
