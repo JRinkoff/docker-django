@@ -66,7 +66,7 @@ alias flushcache='flushredis && flushvarnish && flushtemplates'
 # Aliases (folders)
 alias ~='cd ~;ls -al'
 alias home='cd /home/'
-alias app='cd /home/app/'
+alias app='cd /app/'
 
 # Functions (general)
 cdl() {
@@ -83,6 +83,7 @@ EOF
 )
 echo "$profile" >> ~/.profile
 source ~/.profile
+ln -s /home/app /app
 
 # Install git
 apt-get update
