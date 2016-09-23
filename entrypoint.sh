@@ -22,7 +22,7 @@ if [ "$DEVELOPMENT" ]; then
   exec python manage.py runserver 0.0.0.0:5000 --settings={{project}}.dev
 elif [ "$PRODUCTION" ]; then
   echo "Starting production server"
-  exec gunicorn --workers 3 --bind 0.0.0.0:5000 {{project}}.wsgi:application
+  exec gunicorn --workers 3 --bind 0.0.0.0:5000 --pid /app/docker/etc/gunicorn.pid {{project}}.wsgi:application
 else
   echo "No server specified, Starting /sbin/init"
   exec /sbin/init

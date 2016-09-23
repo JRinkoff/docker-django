@@ -57,10 +57,10 @@ alias hosts='sudo nano /etc/hosts'
 alias django='docker exec -i -t django bash'
 alias redis='docker exec -i -t redis redis-cli -s /app/docker/etc/redis.sock'
 alias flushredis='docker exec -i -t redis redis-cli -s /app/docker/etc/redis.sock flushall'
-alias flushvarnish='docker exec -i -t varnish varnishadm -T 127.0.0.1:6082 -S /etc/varnish/secret ban.url .'
+alias flushvarnish='docker exec -i -t varnish varnishadm -T 127.0.0.1:6082 -S /app/docker/varnish/secret ban.url .'
 alias varnish='docker exec -i -t varnish varnishadm -T 127.0.0.1:6082 -S /app/docker/varnish/secret'
 alias varnishstat='docker exec -i -t varnish bash -c "export TERM=xterm;varnishstat"'
-alias flushtemplates='docker exec -i -t bash -c "rm -rf /app/cache/*"'
+alias flushtemplates='docker exec -i -t django bash -c "rm -rf /app/cache/*"'
 alias flushcache='flushredis && flushvarnish && flushtemplates'
 
 # Aliases (folders)

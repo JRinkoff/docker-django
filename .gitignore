@@ -1,4 +1,5 @@
 /docker/etc/redis.sock
+/docker/etc/gunicorn.pid
 /docker/postgres/data/
 /docker/redis/dump.rdb
 /docker/varnish/varnish.bin
