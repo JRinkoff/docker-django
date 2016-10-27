@@ -9,7 +9,7 @@ def parse_forwarded_for(forwarded_for):
     # Ignores IP addresses from Proxy to get the first unknown IP address
     # Split the list of X-Forwarded-For addresses
     ips = [ip.strip() for ip in forwarded_for.split(',')]
-    # Iterated in reversed order, important because left to right address can be spoofed, so we wan't to traverse
+    # Iterated in reversed order, important because left to right address can be spoofed, so we want to traverse
     # in right to left order.
     for ip in reversed(ips):
         if re.match(settings.DOCKER_IPS, ip):
