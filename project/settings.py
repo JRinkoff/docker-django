@@ -1,11 +1,13 @@
 import os
 from app.handler import skip_redis_connectionerror, skip_debug
+from app.utils import GlobList
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
 ALLOWED_HOSTS = ['.{{project}}.com']
-INTERNAL_IPS = ('127.0.0.1', )
+INTERNAL_IPS = GlobList(['127.0.0.1'])
+DOCKER_IPS = '(172)\.(1[6-9]|2[0-9]|3[0-1])(\.([2][0-5][0-5]|[1][0-9][0-9]|[1-9][0-9]|[0-9])){2}'  # Class B networks
 PREPEND_WWW = True
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'm+stn!t$67en7e&-1e2#&i29=@hv@4s7v)pbf&o5hwsd0gj439')

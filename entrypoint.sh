@@ -11,16 +11,12 @@ if [ ! -f .init ]; then
     touch .init
 fi
 
-echo "Collecting static files"
-python manage.py collectstatic --noinput
-
-echo "Running migrations"
-python manage.py migrate --noinput
-
 if [ "$DEVELOPMENT" ]; then
   echo "Starting development server"
   exec python manage.py runserver 0.0.0.0:5000 --settings={{project}}.dev
 elif [ "$PRODUCTION" ]; then
+  echo "Collecting static files"
+  python manage.py collectstatic --noinput
   echo "Starting production server"
   exec gunicorn --workers 3 --bind 0.0.0.0:5000 --pid /app/docker/etc/gunicorn.pid {{project}}.wsgi:application
 else

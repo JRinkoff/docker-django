@@ -7,11 +7,24 @@ backend default {
     .port = "8080";
 }
 
+acl local {
+    "localhost";
+    "nginx";
+}
+
 sub vcl_recv {
     # Uncomment the following lines to redirect non-https to https
-    #if (req.http.X-Forwarded-Proto !~ "(?i)https") {
-    #    set req.http.x-Redir-Url = "https://www.{{project}}.dev" + req.url;
-    #    error 750 req.http.x-Redir-Url;
+    #if ( client.ip !~ local ){
+        # Unset X-Forwarded-Proto header if not coming from localhost or Nginx
+        # This prevents someone spoofing the X-Forwarded-Proto header and bypassing Nginx
+    #    unset req.http.X-Forwarded-Proto;
+    #    unset req.http.X-Forwarded-For;
+    #    unset req.http.X-Real-IP;
+    #}
+    # HTTPS redirects
+    #if ( req.http.X-Forwarded-Proto !~ "(?i)https"){
+    #    set req.http.x-redir = "https://www.{{project}}.dev" + req.url;
+    #    error 750 "";
     #}
 
     # Pass static files to Nginx
@@ -117,11 +130,11 @@ sub vcl_deliver {
 	remove resp.http.X-Varnish;
 }
 
+# Handles redirecting from http to https
 sub vcl_error {
-    # Redirect non-https to https
-    if (obj.status == 750) {
-        set obj.http.Location = obj.response;
-        set obj.status = 302;
-        return(deliver);
-    }
+  if (obj.status == 750) {
+    set obj.status = 301;
+    set obj.http.Location = req.http.x-redir;
+    return(deliver);
+  }
 }
