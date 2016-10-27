@@ -149,6 +149,9 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',  'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+
 # Email settings
 ADMINS = [('Admin', os.environ.get('EMAIL_HOST_USER', '')), ]
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
