@@ -122,5 +122,23 @@ EOF
 )
 echo "$varnish_logrotate" > /etc/logrotate.d/varnish
 
+# Nginx logrotate
+nginx_logrotate=$(cat <<EOF
+# http://go2linux.garron.me/linux/2011/05/configure-varnish-logs-varnishnsca-logrotate-and-awstats-1014/
+/home/app/docker/log/nginx/*log {
+    daily
+    rotate 30
+    size 100M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 640 root root
+    copytruncate
+}
+EOF
+)
+echo "$nginx_logrotate" > /etc/logrotate.d/nginx
+
 # Crontab
 (crontab -l ; echo "* * * * * docker exec django python /app/manage.py runcrons >> /app/cron.log 2>&1") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
