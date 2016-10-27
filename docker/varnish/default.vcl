@@ -23,7 +23,7 @@ sub vcl_recv {
     #}
     # HTTPS redirects
     #if ( req.http.X-Forwarded-Proto !~ "(?i)https"){
-    #    set req.http.x-redir = "https://www.{{project}}.dev" + req.url;
+    #    set req.http.x-redir = "https://www.{{project}}.com" + req.url;
     #    error 750 "";
     #}
 
