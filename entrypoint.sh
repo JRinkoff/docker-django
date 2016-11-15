@@ -12,9 +12,11 @@ if [ ! -f .init ]; then
 fi
 
 if [ "$DEVELOPMENT" ]; then
+  export PYTHONUNBUFFERED=1
   echo "Starting development server"
   exec python manage.py runserver 0.0.0.0:5000 --settings={{project}}.dev
 elif [ "$PRODUCTION" ]; then
+  unset PYTHONUNBUFFERED
   echo "Collecting static files"
   python manage.py collectstatic --noinput
   echo "Starting production server"
